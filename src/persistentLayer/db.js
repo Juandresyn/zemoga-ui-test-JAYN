@@ -2,12 +2,16 @@
 import minimongo from 'minimongo'
 
 export default class Database {
-  constructor(collectionName) {
+  constructor(collectionName, seed = []) {
     minimongo.utils.autoselectLocalDb({ storage: 'LocalStorageDb' })
     this.LocalDb = minimongo.LocalStorageDb
     this.DB = new this.LocalDb({ namespace: `db.${ collectionName }` })
     this.collectionName = collectionName
     this.addCollection(collectionName)
+
+    if (seed.length > 0) {
+      this.DB[collectionName].seed(seed)
+    }
   }
 
   /**
