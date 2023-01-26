@@ -1,4 +1,4 @@
-import individualList from '../../public/data/individuals.json'
+import individualList from '../data/individuals.json'
 import Database from '../persistentLayer/db'
 import { BD_ENTITIES } from '../types'
 
