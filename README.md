@@ -10,7 +10,7 @@
 - run `npm dev`
 
 ## Deploy
-Once a commit is done to `master` branch, a commit will automatically be pushed to Netlify [HERE](https://cozy-bonbon-20b7bd.netlify.app/)
+Once a commit is done to `master` branch, a commit will automatically be pushed to Netlify [HERE](https://zemoga.netlify.app/)
 
 ### Acceptance Criteria
 
