@@ -1,18 +1,22 @@
 # ZEMOGA UI TEST by Juandres
 
-### Requirements
+## Requirements
 - Node 16+
 - npm v6+
 
-### Instructions
+## Instructions
 - Download the repo.
 - run `npm install`
-- run `npm dev`
+- run `npm run dev`
+
+#### Test && Lint
+- run `npm run test` || `npm run test:watch`
+- run `npm run lint`
 
 ## Deploy
 Once a commit is done to `master` branch, a commit will automatically be pushed to Netlify [HERE](https://zemoga.netlify.app/)
 
-### Acceptance Criteria
+## Acceptance Criteria
 
 Below you will find the minimum requirements we need to consider this challenge as completed 🎉
 
