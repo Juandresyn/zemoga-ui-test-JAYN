@@ -4,9 +4,12 @@ import { currentViewMode, isMobile, isTablet } from '../stores'
 import { VIEW_MODE } from '../types'
 import { dateToTime } from '../utils/dates'
 import { truncateStr } from '../utils/strings'
+import voteController, { getVoteById } from '../controllers/votes.controller'
+
 import Icon from './IconLibrary.vue'
 import Voting from './VotingUrn.vue'
-import voteController, { getVoteById } from '../controllers/votes.controller'
+import GaugeBar from './GaugeBar.vue'
+
 
 const props = defineProps({
   voted: {
@@ -29,13 +32,6 @@ const props = defineProps({
     })
   },
 })
-
-const votesToPercent = (votes) => {
-  const { positive, negative } = props.individual.votes
-  const total = positive + negative
-
-  return `${ (votes*100/total).toFixed(1).replace(/\.0$/, '') }%`;
-}
 
 const handleVote = async (vote) => {
   voteController({ id: props.individual.id, vote })
@@ -93,16 +89,9 @@ const nameLength = computed(() => {
         </div>
       </div>
 
-      <div class="card__votes">
-        <span class="card__votes-up" :style="{ width: votesToPercent(individual.votes.positive) }">
-          <Icon name="thumbs-up" :dimension="isGridOrMobile || isTablet ? '15' : '22'" />
-          {{ votesToPercent(individual.votes.positive) }}
-        </span>
-        <span class="card__votes-down">
-          {{ votesToPercent(individual.votes.negative) }}
-          <Icon name="thumbs-down" :dimension="isGridOrMobile || isTablet ? '15' : '22'" />
-        </span>
-      </div>
+      <GaugeBar
+        :style="isGridOrMobile || isTablet ? 'compact' : 'normal'"
+        :votes="individual.votes"/>
     </div>
   </div>
 </template>
@@ -177,41 +166,6 @@ const nameLength = computed(() => {
     }
   }
 
-  &__votes {
-    position: relative;
-    display: table;
-    width: 100%;
-
-    span {
-      vertical-align: middle;;
-      width: 100%;
-      display: table-cell;
-      box-sizing: content-box;
-      padding: 11px 16px;
-      font-size: 27px;
-      color: var(--color-white);
-      font-weight: 300;
-      line-height: 1.2;
-      min-width: 102px;
-      transition: width .5s linear;
-
-      @media screen and (min-width: 581px) and (max-width: 1023px) {
-        padding: 7px 12px;
-        font-size: 18px;
-      }
-    }
-
-    &-up {
-      background: var(--color-green-600);
-      text-align: right;
-    }
-
-    &-down {
-      background: var(--color-yellow-600);
-      text-align: right;
-    }
-  }
-
   &__current-vote {
     padding: 10px;
     background-color: var(--color-yellow-600);
@@ -276,13 +230,6 @@ const nameLength = computed(() => {
           padding-left: 36px;
           font-size: 15px;
           white-space: initial;
-        }
-      }
-
-      &__votes {
-        span {
-          padding: 7px 12px;
-          font-size: 18px;
         }
       }
 

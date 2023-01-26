@@ -23,7 +23,7 @@ onMounted(() => {
       <span>{{ currentViewMode }}</span>
       <Icon name="chevron-down" />
     </button>
-    <ul v-if="isOpen">
+    <ul v-if="isOpen" role="list">
       <li
         v-for="mode in viewModes" :key="mode"
         role="button"

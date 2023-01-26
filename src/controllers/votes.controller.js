@@ -23,7 +23,7 @@ export const getVoteById = (id) => {
 const actVote = async (vote, remove = false) => {
   const individualFromDb = await dbIndividuals.getById(vote.id)
 
-  if (individualFromDb.id === vote.id) {
+  if (individualFromDb && individualFromDb.id === vote.id) {
     if (vote.vote > 0) {
       individualFromDb.votes.positive += remove ? -1 : 1
     } else {

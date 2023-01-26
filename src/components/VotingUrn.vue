@@ -14,7 +14,7 @@ const props = defineProps({
   },
   style: {
     type: String,
-    default: 'normal'
+    default: 'normal' // small, normal
   }
 })
 
@@ -60,7 +60,7 @@ onMounted(() => {
     </Transition>
 
     <button
-class="voting--submit" :disabled="selected == null"
+      class="voting--submit" :disabled="selected == null"
       @click.prevent="handleVoting">
       <span v-if="voted">Vote Again</span>
       <span v-else>Vote Now</span>
