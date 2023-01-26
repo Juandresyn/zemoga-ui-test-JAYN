@@ -1,15 +1,20 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { viewModes, currentViewMode } from '../stores'
+import { handleViewModeChange } from '../controllers/viewMode.controller'
 
 import Icon from './IconLibrary.vue'
 
 const isOpen = ref(false)
 
 const handleClick = (mode) => {
-  currentViewMode.value = mode
+  handleViewModeChange(mode)
   isOpen.value = false
 }
+
+onMounted(() => {
+  handleViewModeChange()
+})
 </script>
 
 <template>
@@ -34,7 +39,6 @@ const handleClick = (mode) => {
     display: inline-block;
     border: 2px solid var(--color-darker-gray);
     min-width: 175px;
-    padding: 12px;
     text-align: center;
     font-size: 14px;
     text-transform: capitalize;
@@ -44,6 +48,8 @@ const handleClick = (mode) => {
     user-select: none;
 
     &__active {
+      padding: 12px;
+      color: var(--color-black);
       width: 100%;
       font-size: 14px;
       text-transform: capitalize;

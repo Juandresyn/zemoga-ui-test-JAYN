@@ -1,3 +1,5 @@
+export const VIEW_MODE_KEY = 'rot-view-mode'
+
 export const VIEW_MODE = {
   GRID: 'grid',
   LIST: 'list'
