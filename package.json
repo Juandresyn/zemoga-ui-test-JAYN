@@ -8,13 +8,14 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.vue",
-    "create-env": "printenv > .env"
+    "prepare": "husky install"
   },
   "dependencies": {
     "minimongo": "^6.12.6",
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
