@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name:rule-of-thumb
-        image: gcr.io/zemoga-ui-prod/github.com/juandresyn/rule-of-thumb
+        image: gcr.io/zemoga-ui-prod/github.com/Juandresyn/zemoga-ui-test-JAYN
         ports:
         - containerPort: 8080
         env:
